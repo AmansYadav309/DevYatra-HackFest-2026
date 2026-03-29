@@ -35,10 +35,10 @@ const FAQ_ITEMS = [
         a: "Yes! Two structured mentorship sessions will be conducted during Round 1."
     }, {
            q: "How is Round 1 conducted?",
-        a: "Round 1 begins with an online kickoff on Google Meet, followed by a continuous 24-hour coding window starting 15 March 2026."
+        a: "Round 1 begins with an online kickoff on Google Meet, followed by a continuous 24-hour coding window starting 4th April 2026."
     }, {
            q: "How are teams shortlisted?",
-        a: "Based on innovation, technical quality, AWS service usage, and overall feasibility of the solution."
+        a: "Based on innovation, technical quality, service usage, and overall feasibility of the solution."
     },{
         q:"what do we need to submit? ",
         a:"Your Round 1 submission must include: (1) PPT Presentation using the official template (PPT/PPTX format, max 15 MB); (2) Data Report — a written description of your project, the problem chosen, your solution approach, and expected impact; (3) Public GitHub Repository URL with all source code; and (4) Deployment/Live Demo URL (optional but strongly recommended). All submissions are made via the Project Submission Portal."

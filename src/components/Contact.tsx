@@ -11,7 +11,7 @@ export const Contact: React.FC = () => {
                 </AnimatedHeading>
 
                 <div className="grid md:grid-cols-2 gap-8 md:gap-16">
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
@@ -19,17 +19,17 @@ export const Contact: React.FC = () => {
                     >
                         <span className="material-symbols-outlined text-5xl text-primary mb-6">support_agent</span>
                         <h3 className="text-2xl font-bold mb-8">Event Coordinators</h3>
-                        
+
                         <div className="space-y-6 text-on-surface-variant">
                             <div>
                                 <span className="block text-xs uppercase tracking-widest text-[#a3aac4] mb-1 font-bold">Event Head</span>
                                 <span className="text-lg text-on-surface font-semibold block">AMAN YADAV</span>
                                 <span className="text-sm block mt-1">+91 8380045733</span>
-                                
+
                             </div>
                             <div>
                                 <span className="block text-xs uppercase tracking-widest text-[#a3aac4] mb-1 font-bold">Technical Lead</span>
-                                <span className="text-lg text-on-surface font-semibold block">GOSHANK MESHRAM4</span>
+                                <span className="text-lg text-on-surface font-semibold block">GOSHANK MESHRAM</span>
                                 <span className="text-sm block mt-1">+91 7620032348</span>
                             </div>
                             <div className="pt-6 border-t border-white/10 mt-6 text-sm">
@@ -38,14 +38,14 @@ export const Contact: React.FC = () => {
                         </div>
                     </motion.div>
 
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         className="glass-card p-10 rounded-3xl border-white/10 flex flex-col justify-center"
                     >
                         <h3 className="text-2xl font-bold mb-8 text-center md:text-left">Important Links</h3>
-                        
+
                         <div className="space-y-4">
                             <a href="https://chat.whatsapp.com/CYOdFUn8VbJ44PQd0ouLaf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-white/5 hover:bg-white/10 border border-white/5 p-4 rounded-xl transition-all group">
                                 <div className="w-12 h-12 rounded-lg bg-[#25D366]/20 flex items-center justify-center text-[#25D366] group-hover:scale-110 transition-transform">
