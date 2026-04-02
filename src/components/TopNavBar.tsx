@@ -32,8 +32,12 @@ export const TopNavBar: React.FC = () => {
                             <RollingText text={nav} hoverColorClass="text-primary" />
                         </a>
                     ))}
-                    <Link to="/problems" className="font-headline font-bold tracking-tight text-sm text-on-surface-variant hover:text-on-background transition-colors">
-                        <RollingText text="Problems" hoverColorClass="text-primary" />
+                    <Link to="/problems" className="font-headline font-bold tracking-tight text-sm text-primary hover:text-primary transition-colors relative flex items-center gap-2">
+                        <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                        </span>
+                        <RollingText text="Problem Statements" hoverColorClass="text-primary" />
                     </Link>
                     <Link to="/submit" className="font-headline font-bold tracking-tight text-sm text-on-surface-variant hover:text-on-background transition-colors">
                         <RollingText text="Submit" hoverColorClass="text-primary" />

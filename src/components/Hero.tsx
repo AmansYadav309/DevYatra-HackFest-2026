@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { HACKATHON_INFO } from '../data/mockData';
 import { GravityStarsBackground } from './ui/GravityStarsBackground';
 
@@ -98,7 +99,7 @@ export const Hero: React.FC = () => {
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.9, duration: 0.8 }}
-                    className="flex flex-col sm:flex-row gap-6 justify-center mb-16"
+                    className="flex flex-col sm:flex-row gap-6 justify-center mb-10"
                 >
                    <button 
                         onClick={() => window.open('https://forms.gle/rB2doC8FYhcFm6g16', '_blank')}
@@ -118,10 +119,30 @@ export const Hero: React.FC = () => {
                     </a>
                 </motion.div>
 
+                {/* Problem Statements Released - Notification Pill */}
+                <motion.div
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: 1, duration: 0.6, type: "spring", stiffness: 200 }}
+                    className="mb-10"
+                >
+                    <Link 
+                        to="/problems"
+                        className="inline-flex items-center gap-3 px-8 py-3 rounded-full bg-gradient-to-r from-primary/15 via-primary/10 to-primary/15 backdrop-blur-xl border border-primary/40 text-primary hover:border-primary/70 hover:from-primary/25 hover:via-primary/15 hover:to-primary/25 transition-all duration-500 group shadow-[0_0_25px_rgba(253,191,31,0.15)] hover:shadow-[0_0_40px_rgba(253,191,31,0.35)]"
+                    >
+                        <span className="flex h-2.5 w-2.5 relative">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary shadow-[0_0_8px_#fdbf1f]"></span>
+                        </span>
+                        <span className="text-sm font-black tracking-wider uppercase">🚀 Problem Statements Released!</span>
+                        <span className="material-symbols-outlined text-base group-hover:translate-x-1.5 transition-transform duration-300">arrow_forward</span>
+                    </Link>
+                </motion.div>
+
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1, duration: 0.8 }}
+                    transition={{ delay: 1.2, duration: 0.8 }}
                     className="flex flex-col items-center justify-center gap-4"
                 >
                     <span className="text-on-surface-variant text-sm font-bold uppercase tracking-widest">

@@ -1,0 +1,273 @@
+ 
+ 
+ID Title Problem 
+Statement 
+Expected Solution Domain 
+PS-01 Smart Clinic 
+Queue 
+Management 
+System 
+Manual systems 
+cause long waits, 
+overcrowding, and 
+poor patient 
+experience. Staff 
+struggle with 
+efficiency and 
+patients lack turn 
+visibility. 
+• Digital token generation 
+• Real-time tracking 
+• Waiting time estimation 
+• Notifications 
+• Admin dashboard 
+HealthTech 
+PS-02 Medicine & 
+Health Routine 
+Tracker 
+Patients (especially 
+elderly/chronic) fail 
+to follow routines 
+like meds and 
+hydration. Lack of 
+reminders leads to 
+poor health 
+outcomes. 
+• Medicine & habit tracking 
+• Timely reminders 
+• Routine monitoring 
+• Consistency reports 
+• Health insights 
+HealthTech 
+PS-03 Expense Analyzer 
+with Insights 
+Users record 
+expenses but lack 
+analysis, leading to 
+overspending and 
+poor planning. They 
+cannot identify 
+unnecessary costs. 
+• Expense categorization 
+• Spending trend analysis 
+• Overspending detection 
+• Savings suggestions 
+• Visual dashboard 
+FinTech  
+ 
+PS-04 Smart Study 
+Planner with 
+Analytics 
+Students struggle 
+with schedules and 
+productivity. Lack 
+of planning leads to 
+incomplete tasks 
+and poor time 
+management. 
+• Study scheduling 
+• Task tracking 
+• Productivity analytics 
+• Improvement suggestions 
+• Reminders 
+EdTech 
+PS-05 Student 
+Performance 
+Predictor 
+Teachers find it 
+hard to identify at-
+risk students before 
+exams. Manual 
+tracking is 
+inefficient and 
+limits timely 
+support. 
+• Data collection 
+(marks/attendance) 
+• Performance prediction 
+• Identify weak students 
+• Suggest improvements 
+• Monitoring dashboard 
+AI & EdTech 
+PS-06 Resume–Job 
+Match Analyzer 
+Students don't 
+understand how 
+their skills match 
+job requirements. 
+Recruiters struggle 
+to evaluate 
+candidates quickly. 
+• Resume/JD upload 
+• Skill extraction 
+• Match score calculation 
+• Gap identification 
+• Improvement suggestions 
+HR-Tech 
+PS-07 Smart Parking 
+Finder System 
+Drivers waste time 
+and fuel searching 
+for parking in urban 
+areas, increasing 
+congestion. Lack of 
+real-time info 
+makes it inefficient. 
+• Slot visibility 
+• Location-based search 
+• Real-time updates 
+• Navigation support 
+• Crowdsourced updates 
+Smart City 
+PS-08 Emergency Alert 
+& Response 
+System 
+Individuals cannot 
+quickly notify 
+authorities or family 
+during emergencies, 
+leading to delayed 
+communication and 
+consequences. 
+• One-tap alert 
+• Live location sharing 
+• Emergency contact 
+notification 
+• Alert history 
+• Simple interface 
+Public Safety  
+ 
+PS-09 Real-Time 
+Construction 
+Progress Tracker 
+Projects face delays 
+due to lack of real-
+time monitoring and 
+poor 
+communication. 
+Manual reporting is 
+often inaccurate. 
+• Daily progress updates 
+• Planned vs actual 
+comparison 
+• Delay identification 
+• Dashboard monitoring 
+• Alert system 
+Public & Social 
+PS-10 Fake News 
+Detection 
+Assistant 
+Users share 
+unverified info on 
+social media, 
+spreading 
+misinformation. A 
+tool is needed to 
+verify content 
+before sharing. 
+• Text analysis 
+• Source verification 
+• Credibility score 
+• Warning system 
+• Fact-check links 
+AI & Cybersecurity 
+PS-11 Smart Water 
+Usage Monitor 
+Water wastage goes 
+unnoticed due to 
+lack of awareness. 
+Users cannot track 
+consumption or 
+detect leaks easily. 
+• Usage tracking 
+• Spike detection 
+• Leakage alerts 
+• Analytics dashboard 
+• Conservation tips 
+IoT & 
+Sustainability 
+PS-12 Gamified 
+Environmental 
+Awareness 
+Platform 
+Environmental 
+education is too 
+theoretical and fails 
+to engage students. 
+Lack of interaction 
+reduces 
+participation in eco-
+activities. 
+• Quizzes & challenges 
+• Rewards & badges 
+• Progress tracking 
+• Leaderboard 
+• Real-life activities 
+EdTech & 
+Sustainability 
+PS-13 Collaborative 
+Travel Planning 
+& Cost-Sharing 
+Traveling alone is 
+expensive and 
+finding compatible 
+partners is difficult. 
+Existing platforms 
+lack cost-sharing 
+flexibility. 
+• Plan creation/joining 
+• User matching 
+• Cost sharing 
+• Ratings & verification 
+• Communication system 
+Travel 
+PS-14 Intelligent 
+Tourist–Guide 
+Matching 
+Tourists face 
+overcharging and a 
+lack of 
+transparency. They 
+struggle to find 
+• Verified guide listing 
+• Transparent pricing 
+• Custom itineraries 
+Travel  
+ 
+guides matching 
+their preferences. 
+• Ratings & reviews 
+• Cost estimation 
+PS-15 AI Internship 
+Readiness & Skill 
+Gap Analyzer 
+Students apply for 
+internships without 
+understanding 
+required skills, 
+leading to high 
+rejection rates and 
+poor prep. 
+• Resume analysis 
+• Job comparison 
+• Skill gap detection 
+• Learning roadmap 
+• Readiness score 
+AI & EdTech 
+PS-16 AI-Powered 
+Lecture 
+Summarization 
+Students struggle to 
+manage lengthy 
+lectures and 
+unorganized notes, 
+often missing 
+important concepts 
+during revision. 
+• Multi-format input 
+• Speech-to-text 
+• Content summarization 
+• Key point extraction 
+• Structured notes 
+AI & EdTech 
+ 
