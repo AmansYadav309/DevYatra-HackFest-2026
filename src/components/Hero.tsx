@@ -5,18 +5,21 @@ import { HACKATHON_INFO } from '../data/mockData';
 import { GravityStarsBackground } from './ui/GravityStarsBackground';
 
 export const Hero: React.FC = () => {
+    const targetDate = new Date("April 4, 2026 11:00:00").getTime();
+    
     const [timeLeft, setTimeLeft] = useState({
         days: 0, hours: 0, minutes: 0, seconds: 0
     });
+    const [isExpired, setIsExpired] = useState(() => new Date().getTime() > targetDate);
 
     useEffect(() => {
-        const targetDate = new Date("April 4, 2026 23:59:59").getTime();
         
         const interval = setInterval(() => {
             const now = new Date().getTime();
             const distance = targetDate - now;
 
             if (distance < 0) {
+                setIsExpired(true);
                 clearInterval(interval);
                 return;
             }
@@ -101,14 +104,24 @@ export const Hero: React.FC = () => {
                     transition={{ delay: 0.9, duration: 0.8 }}
                     className="flex flex-col sm:flex-row gap-6 justify-center mb-10"
                 >
-                   <button 
-                        onClick={() => window.open('https://forms.gle/rB2doC8FYhcFm6g16', '_blank')}
-                        className="relative overflow-hidden group bg-gradient-to-br from-primary to-primary-container text-black px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-[0_0_30px_rgba(253,191,31,0.4)] hover:shadow-[0_0_50px_rgba(253,191,31,0.8)] hover:scale-105 active:scale-95">
-                        <span className="relative z-10 flex items-center justify-center gap-2">
-                            <span className="material-symbols-outlined">rocket_launch</span> Register Now
-                        </span>
-                        <div className="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0 rounded-full" />
-                    </button>
+                    {isExpired ? (
+                        <div className="relative overflow-hidden group bg-gradient-to-br from-red-500/20 to-red-900/40 border border-red-500/50 backdrop-blur-md text-red-100 px-10 py-4 rounded-full font-bold text-lg shadow-[0_0_30px_rgba(239,68,68,0.3)] flex items-center justify-center gap-3 cursor-not-allowed">
+                            <span className="flex h-3 w-3 relative">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500 shadow-[0_0_8px_#ef4444]"></span>
+                            </span>
+                            Registration Closed
+                        </div>
+                    ) : (
+                        <button 
+                            onClick={() => window.open('https://forms.gle/rB2doC8FYhcFm6g16', '_blank')}
+                            className="relative overflow-hidden group bg-gradient-to-br from-primary to-primary-container text-black px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-[0_0_30px_rgba(253,191,31,0.4)] hover:shadow-[0_0_50px_rgba(253,191,31,0.8)] hover:scale-105 active:scale-95">
+                            <span className="relative z-10 flex items-center justify-center gap-2">
+                                <span className="material-symbols-outlined">rocket_launch</span> Register Now
+                            </span>
+                            <div className="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0 rounded-full" />
+                        </button>
+                    )}
                     <a 
                         href="/DevYatra-Hackfest-template.pptx"
                         download="DevYatra-Hackfest-template.pptx"
@@ -148,16 +161,18 @@ export const Hero: React.FC = () => {
                     <span className="text-on-surface-variant text-sm font-bold uppercase tracking-widest">
                         Registration closed • 4th April 2026
                     </span>
-                    <div className="flex gap-4 sm:gap-6">
-                        {Object.entries(timeLeft).map(([unit, value]) => (
-                            <div key={unit} className="flex flex-col items-center">
-                                <div className="glass-card w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center mb-2 border border-primary/20 shadow-[0_0_15px_rgba(253,191,31,0.1)]">
-                                    <span className="text-2xl sm:text-3xl font-black text-primary">{String(value).padStart(2, '0')}</span>
+                    {!isExpired && (
+                        <div className="flex gap-4 sm:gap-6">
+                            {Object.entries(timeLeft).map(([unit, value]) => (
+                                <div key={unit} className="flex flex-col items-center">
+                                    <div className="glass-card w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center mb-2 border border-primary/20 shadow-[0_0_15px_rgba(253,191,31,0.1)]">
+                                        <span className="text-2xl sm:text-3xl font-black text-primary">{String(value).padStart(2, '0')}</span>
+                                    </div>
+                                    <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">{unit}</span>
                                 </div>
-                                <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">{unit}</span>
-                            </div>
-                        ))}
-                    </div>
+                            ))}
+                        </div>
+                    )}
                 </motion.div>
             </div>
         </section>

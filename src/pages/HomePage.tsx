@@ -5,6 +5,7 @@ import { Hero } from '../components/Hero';
 import { AboutStats } from '../components/AboutStats';
 import { WhyParticipate } from '../components/WhyParticipate';
 import { EventPhases } from '../components/EventPhases';
+import { Sponsors } from '../components/Sponsors';
 import { Prizes } from '../components/Prizes';
 import { Organizer } from '../components/Organizer';
 import { RulesAndEligibility } from '../components/RulesAndEligibility';
@@ -43,6 +44,7 @@ export const HomePage: React.FC = () => {
         <AboutStats />
         <WhyParticipate />
         <EventPhases />
+        <Sponsors />
         <Prizes />
         <Organizer />
         <RulesAndEligibility />
