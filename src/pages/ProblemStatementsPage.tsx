@@ -215,11 +215,11 @@ export const ProblemStatementsPage: React.FC = () => {
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            onClick={() => window.open('https://forms.gle/rB2doC8FYhcFm6g16', '_blank')}
+                            onClick={() => window.location.href = '/submit'}
                             className="relative overflow-hidden group bg-gradient-to-br from-primary to-primary-container text-black px-10 sm:px-12 py-4 sm:py-5 rounded-full font-black text-lg sm:text-xl transition-all duration-300 shadow-[0_0_30px_rgba(253,191,31,0.3)] hover:shadow-[0_0_50px_rgba(253,191,31,0.6)] z-10"
                         >
                             <span className="relative z-10 flex items-center justify-center gap-3">
-                                <span className="material-symbols-outlined font-black">rocket_launch</span> Register Now
+                                <span className="material-symbols-outlined font-black">cloud_upload</span> Submit your Project
                             </span>
                             <div className="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0 rounded-full" />
                         </motion.button>

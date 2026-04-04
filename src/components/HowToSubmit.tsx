@@ -92,9 +92,9 @@ export const HowToSubmit: React.FC = () => {
                             <span className="material-symbols-outlined text-lg">download</span> Download PPT Template
                         </a>
                         <button 
-                            onClick={() => window.open('https://forms.gle/rB2doC8FYhcFm6g16', '_blank')}
+                            onClick={() => window.location.href = '/submit'}
                             className="bg-gradient-to-r from-orange-500 to-amber-500 hover:scale-105 text-white px-8 py-3 rounded-xl font-bold text-sm transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(249,115,22,0.3)]">
-                            <span className="material-symbols-outlined text-lg">rocket_launch</span> Register NOW
+                            <span className="material-symbols-outlined text-lg">cloud_upload</span> Submit your Project
                         </button>
                     </div>
                 </motion.div>

@@ -114,10 +114,10 @@ export const Hero: React.FC = () => {
                         </div>
                     ) : (
                         <button 
-                            onClick={() => window.open('https://forms.gle/rB2doC8FYhcFm6g16', '_blank')}
+                            onClick={() => window.location.href = '/submit'}
                             className="relative overflow-hidden group bg-gradient-to-br from-primary to-primary-container text-black px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-[0_0_30px_rgba(253,191,31,0.4)] hover:shadow-[0_0_50px_rgba(253,191,31,0.8)] hover:scale-105 active:scale-95">
                             <span className="relative z-10 flex items-center justify-center gap-2">
-                                <span className="material-symbols-outlined">rocket_launch</span> Register Now
+                                <span className="material-symbols-outlined">cloud_upload</span> Submit your Project
                             </span>
                             <div className="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0 rounded-full" />
                         </button>

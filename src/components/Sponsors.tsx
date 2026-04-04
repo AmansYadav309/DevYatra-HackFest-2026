@@ -3,16 +3,17 @@ import { motion } from 'framer-motion';
 
 const sponsors = [
   {
-    name: 'PSK TECHNOLOGIES PVT. LTD',
-    logo: '/sponsorship/psk-technologies.png',
-    link: 'https://pskitservices.com/'
+    name: 'Edverciity',
+    logo: '/sponsorship/Edverciity Logo.jpg.jpeg',
+    link: '#'
   },
   {
     name: 'Amplemine',
     logo: '/sponsorship/apmplemine.jpeg',
-    link: '#' // Placeholder
+    link: '#'
   }
 ];
+
 
 export const Sponsors: React.FC = () => {
   return (

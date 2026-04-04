@@ -44,10 +44,10 @@ export const TopNavBar: React.FC = () => {
                     </Link>
                 </div>
                 <button 
-                    onClick={() => window.open('https://forms.gle/rB2doC8FYhcFm6g16', '_blank')}
+                    onClick={() => window.location.href = '/submit'}
                     className="relative overflow-hidden group bg-gradient-to-br from-primary to-primary-container text-on-primary-fixed px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 shadow-[0_0_20px_rgba(253,191,31,0.2)] hover:shadow-[0_0_40px_rgba(253,191,31,0.7)] hover:scale-105 active:scale-95">
                     <span className="relative z-10 flex items-center justify-center">
-                        <RollingText text="Register NOW" hoverColorClass="text-black" />
+                        <RollingText text="Submit your Project" hoverColorClass="text-black" />
                     </span>
                     <div className="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0 rounded-full" />
                 </button>
