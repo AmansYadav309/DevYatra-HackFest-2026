@@ -1,6 +1,7 @@
 export const AUTHORIZED_EMAILS = [
     "hrutujaumratkar123@gmail.com",
     "amanyadav@gmail.com",
+    "rohitwange@gmail.com",
     "kaushikkhodke29@gmail.com",
     "harshadwaghade255@gmail.com",
     "sumityeotkar11@gmail.com",
