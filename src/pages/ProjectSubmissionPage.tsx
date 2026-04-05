@@ -38,6 +38,7 @@ export const ProjectSubmissionPage: React.FC = () => {
     const [problemStatement, setProblemStatement] = useState('');
     const [githubLink, setGithubLink] = useState('');
     const [demoLink, setDemoLink] = useState('');
+    const [driveLink, setDriveLink] = useState('');
     const [pptFile, setPptFile] = useState<File | null>(null);
     const [videoFile, setVideoFile] = useState<File | null>(null);
 
@@ -146,8 +147,14 @@ export const ProjectSubmissionPage: React.FC = () => {
         setIsSubmitting(true);
         setFormError('');
 
-        if (!teamName || !collegeName || !problemStatement || !githubLink || !pptFile || !videoFile) {
-            setFormError('Please fill all mandatory fields and upload both files.');
+        if (!teamName || !collegeName || !problemStatement || !githubLink || !pptFile) {
+            setFormError('Please fill all mandatory fields and upload your PPT.');
+            setIsSubmitting(false);
+            return;
+        }
+
+        if (!videoFile && !driveLink) {
+            setFormError('Please either upload a Video Demo or provide a Google Drive Link.');
             setIsSubmitting(false);
             return;
         }
@@ -155,7 +162,7 @@ export const ProjectSubmissionPage: React.FC = () => {
         try {
             // Upload files to Cloudinary
             const pptUrl = await uploadToCloudinary(pptFile);
-            const videoUrl = await uploadToCloudinary(videoFile);
+            const videoUrl = videoFile ? await uploadToCloudinary(videoFile) : null;
 
             // Save to Firestore
             await addDoc(collection(db, 'submissions'), {
@@ -165,6 +172,7 @@ export const ProjectSubmissionPage: React.FC = () => {
                 problemStatement,
                 githubLink,
                 demoLink: demoLink || null,
+                driveLink: driveLink || null,
                 pptUrl,
                 videoUrl,
                 submittedAt: serverTimestamp(),
@@ -503,6 +511,21 @@ export const ProjectSubmissionPage: React.FC = () => {
                                                         />
                                                     </div>
                                                 </div>
+                                                <div className="md:col-span-2">
+                                                    <label className="block text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-2 ml-1 flex justify-between">
+                                                        <span>Google Drive Link <span className="opacity-50 lowercase tracking-normal font-medium">(optional, use if video upload fails)</span></span>
+                                                    </label>
+                                                    <div className="relative">
+                                                        <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/30 text-lg">add_to_drive</span>
+                                                        <input
+                                                            type="url"
+                                                            value={driveLink}
+                                                            onChange={(e) => setDriveLink(e.target.value)}
+                                                            placeholder="https://drive.google.com/file/d/..."
+                                                            className="w-full bg-black/40 border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-white focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all text-sm"
+                                                        />
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -543,7 +566,6 @@ export const ProjectSubmissionPage: React.FC = () => {
                                                         accept="video/*"
                                                         onChange={handleVideoChange}
                                                         className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
-                                                        required
                                                     />
                                                     <div className="flex flex-col items-center justify-center pointer-events-none">
                                                         <span className={`material-symbols-outlined text-4xl mb-3 transition-colors ${videoFile ? 'text-primary' : 'text-white/20 group-hover:text-primary/60'}`}>
@@ -555,7 +577,7 @@ export const ProjectSubmissionPage: React.FC = () => {
                                                         <span className={`text-xs font-medium max-w-xs ${videoFile && videoFile.size > 200 * 1024 * 1024 ? 'text-red-400 font-bold' : 'text-on-surface-variant'}`}>
                                                             {videoFile ? `${(videoFile.size / 1024 / 1024).toFixed(2)} MB` : 'Drag & drop or click to browse'}
                                                         </span>
-                                                        {!videoFile && <span className="text-[10px] uppercase font-bold text-primary/50 mt-4 tracking-widest bg-primary/10 px-3 py-1 rounded-full">Required • Max 200MB</span>}
+                                                        {!videoFile && <span className="text-[10px] uppercase font-bold text-primary/50 mt-4 tracking-widest bg-primary/10 px-3 py-1 rounded-full">Optional • Max 200MB</span>}
                                                     </div>
                                                 </div>
 

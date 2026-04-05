@@ -11,8 +11,9 @@ interface Submission {
     problemStatement: string;
     githubLink: string;
     demoLink?: string;
+    driveLink?: string;
     pptUrl: string;
-    videoUrl: string;
+    videoUrl?: string | null;
     submittedAt?: any;
     score?: number;
     status?: 'pending' | 'selected' | 'rejected';
@@ -20,9 +21,9 @@ interface Submission {
 }
 
 // Fields to grade, each worth 1-5 points
-const GRADE_FIELDS = [
+const GRADE_FIELDS: Array<{ key: string, label: string, icon: string, urlKey: string, secondaryUrlKey?: string, secondaryLabel?: string }> = [
     { key: 'ppt',    label: 'PPT Presentation', icon: 'co_present',    urlKey: 'pptUrl' },
-    { key: 'video',  label: 'Video Demo',        icon: 'smart_display', urlKey: 'videoUrl' },
+    { key: 'video',  label: 'Video Demo',        icon: 'smart_display', urlKey: 'videoUrl', secondaryUrlKey: 'driveLink', secondaryLabel: 'Drive' },
     { key: 'github', label: 'GitHub Repo',       icon: 'code',          urlKey: 'githubLink' },
     { key: 'demo',   label: 'Live Demo',         icon: 'language',      urlKey: 'demoLink' },
 ];
@@ -36,10 +37,11 @@ const StarRatingRow: React.FC<{
     onRate: (fieldKey: string, rating: number) => void;
 }> = ({ sub, field, onRate }) => {
     const url = (sub as any)[field.urlKey];
+    const secondaryUrl = field.secondaryUrlKey ? (sub as any)[field.secondaryUrlKey] : null;
     const currentRating = sub.ratings?.[field.key] ?? 0;
     const [hovered, setHovered] = useState(0);
 
-    if (!url) return null;
+    if (!url && !secondaryUrl) return null;
 
     return (
         <div className="p-3 rounded-xl bg-white/[0.035] border border-white/5 hover:bg-white/[0.06] transition-colors">
@@ -48,14 +50,31 @@ const StarRatingRow: React.FC<{
                 <span className="material-symbols-outlined text-primary text-xl shrink-0">{field.icon}</span>
                 <div className="flex flex-col min-w-0 flex-1">
                     <span className="text-[10px] text-on-surface-variant/60 font-bold uppercase tracking-wider">{field.label}</span>
-                    <a
-                        href={url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-xs text-blue-400 hover:text-blue-300 hover:underline truncate"
-                    >
-                        {url}
-                    </a>
+                    <div className="flex flex-col gap-0.5">
+                        {url && (
+                            <a
+                                href={url}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-xs text-blue-400 hover:text-blue-300 hover:underline truncate"
+                            >
+                                {url}
+                            </a>
+                        )}
+                        {secondaryUrl && (
+                            <div className="flex items-center gap-1.5 mt-0.5 max-w-full">
+                                <span className="text-[8px] bg-primary/10 text-primary px-1.5 py-0.5 rounded font-black uppercase tracking-widest shrink-0">{field.secondaryLabel || 'Alt Link'}</span>
+                                <a
+                                    href={secondaryUrl}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="text-xs text-blue-400 hover:text-blue-300 hover:underline truncate"
+                                >
+                                    {secondaryUrl}
+                                </a>
+                            </div>
+                        )}
+                    </div>
                 </div>
                 {/* Current score badge */}
                 <div className={`shrink-0 w-10 h-10 rounded-xl flex items-center justify-center font-black text-lg transition-all ${
