@@ -105,12 +105,9 @@ export const Hero: React.FC = () => {
                     className="flex flex-col sm:flex-row gap-6 justify-center mb-10"
                 >
                     {isExpired ? (
-                        <div className="relative overflow-hidden group bg-gradient-to-br from-red-500/20 to-red-900/40 border border-red-500/50 backdrop-blur-md text-red-100 px-10 py-4 rounded-full font-bold text-lg shadow-[0_0_30px_rgba(239,68,68,0.3)] flex items-center justify-center gap-3 cursor-not-allowed">
-                            <span className="flex h-3 w-3 relative">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500 shadow-[0_0_8px_#ef4444]"></span>
-                            </span>
-                            Registration Closed
+                        <div className="relative overflow-hidden group bg-white/5 backdrop-blur-md border border-primary/40 text-primary px-10 py-4 rounded-full font-bold text-lg shadow-[0_0_20px_rgba(253,191,31,0.2)] flex items-center justify-center gap-3">
+                            <span className="material-symbols-outlined text-primary">location_on</span>
+                            KDK College of Engineering Nagpur
                         </div>
                     ) : (
                         <button 
@@ -122,14 +119,13 @@ export const Hero: React.FC = () => {
                             <div className="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0 rounded-full" />
                         </button>
                     )}
-                    <a 
-                        href="/DevYatra-Hackfest-template.pptx"
-                        download="DevYatra-Hackfest-template.pptx"
-                        className="glass-card px-10 py-4 rounded-full font-bold text-lg hover:bg-white/5 transition-all flex items-center justify-center gap-2 group"
-                    >
-                        <span className="material-symbols-outlined group-hover:-translate-y-1 transition-transform">download</span>
-                        Download PPT
-                    </a>
+                    <div className="relative overflow-hidden group bg-gradient-to-br from-red-500/20 to-red-900/40 border border-red-500/50 backdrop-blur-md text-red-100 px-10 py-4 rounded-full font-bold text-lg shadow-[0_0_30px_rgba(239,68,68,0.3)] flex items-center justify-center gap-3">
+                        <span className="flex h-3 w-3 relative">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500 shadow-[0_0_8px_#ef4444]"></span>
+                        </span>
+                        Offline Mode
+                    </div>
                 </motion.div>
 
                 {/* Problem Statements Released - Notification Pill */}
@@ -159,7 +155,7 @@ export const Hero: React.FC = () => {
                     className="flex flex-col items-center justify-center gap-4"
                 >
                     <span className="text-on-surface-variant text-sm font-bold uppercase tracking-widest">
-                        Registration closed • 4th April 2026
+                         8th April 2026
                     </span>
                     {!isExpired && (
                         <div className="flex gap-4 sm:gap-6">
