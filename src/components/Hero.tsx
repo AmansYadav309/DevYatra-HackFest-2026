@@ -104,7 +104,7 @@ export const Hero: React.FC = () => {
                     transition={{ delay: 0.9, duration: 0.8 }}
                     className="flex flex-col sm:flex-row gap-6 justify-center mb-10"
                 >
-                    {isExpired ? (
+                    {/* {isExpired ? (
                         <div className="relative overflow-hidden group bg-white/5 backdrop-blur-md border border-primary/40 text-primary px-10 py-4 rounded-full font-bold text-lg shadow-[0_0_20px_rgba(253,191,31,0.2)] flex items-center justify-center gap-3">
                             <span className="material-symbols-outlined text-primary">location_on</span>
                             KDK College of Engineering Nagpur
@@ -118,14 +118,28 @@ export const Hero: React.FC = () => {
                             </span>
                             <div className="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0 rounded-full" />
                         </button>
-                    )}
-                    <div className="relative overflow-hidden group bg-gradient-to-br from-red-500/20 to-red-900/40 border border-red-500/50 backdrop-blur-md text-red-100 px-10 py-4 rounded-full font-bold text-lg shadow-[0_0_30px_rgba(239,68,68,0.3)] flex items-center justify-center gap-3">
+                    )} */}
+                    <button 
+                        onClick={() => window.location.href = '/register'}
+                        className="relative overflow-hidden group bg-gradient-to-br from-primary to-primary-container text-black px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-[0_0_30px_rgba(253,191,31,0.4)] hover:shadow-[0_0_50px_rgba(253,191,31,0.8)] hover:scale-105 active:scale-95">
+                        <span className="relative z-10 flex items-center justify-center gap-2">
+                            <span className="material-symbols-outlined">rocket_launch</span> Register Now
+                        </span>
+                        <div className="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0 rounded-full" />
+                    </button>
+
+                    {/* <div className="relative overflow-hidden group bg-gradient-to-br from-red-500/20 to-red-900/40 border border-red-500/50 backdrop-blur-md text-red-100 px-10 py-4 rounded-full font-bold text-lg shadow-[0_0_30px_rgba(239,68,68,0.3)] flex items-center justify-center gap-3">
                         <span className="flex h-3 w-3 relative">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500 shadow-[0_0_8px_#ef4444]"></span>
                         </span>
                         Offline Mode
-                    </div>
+                    </div> */}
+                    <button 
+                        onClick={() => window.open('/ppt', '_blank')}
+                        className="relative overflow-hidden group bg-white/5 backdrop-blur-md border border-white/10 text-white px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:scale-105 active:scale-95 flex items-center justify-center gap-3">
+                        <span className="material-symbols-outlined">download</span> Download PPT
+                    </button>
                 </motion.div>
 
                 {/* Problem Statements Released - Notification Pill */}
@@ -154,7 +168,7 @@ export const Hero: React.FC = () => {
                     transition={{ delay: 1.2, duration: 0.8 }}
                     className="flex flex-col items-center justify-center gap-4"
                 >
-                    <span className="text-on-surface-variant text-sm font-bold uppercase tracking-widest">
+                    {/* <span className="text-on-surface-variant text-sm font-bold uppercase tracking-widest">
                          8th April 2026
                     </span>
                     {!isExpired && (
@@ -168,7 +182,20 @@ export const Hero: React.FC = () => {
                                 </div>
                             ))}
                         </div>
-                    )}
+                    )} */}
+                    <span className="text-on-surface-variant text-sm font-bold uppercase tracking-widest">
+                         REGISTRATION CLOSED • 4TH APRIL 2026
+                    </span>
+                    <div className="flex gap-4 sm:gap-6">
+                        {Object.entries(timeLeft).map(([unit, value]) => (
+                            <div key={unit} className="flex flex-col items-center">
+                                <div className="glass-card w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center mb-2 border border-primary/20 shadow-[0_0_15px_rgba(253,191,31,0.1)]">
+                                    <span className="text-2xl sm:text-3xl font-black text-primary">{String(value).padStart(2, '0')}</span>
+                                </div>
+                                <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">{unit}</span>
+                            </div>
+                        ))}
+                    </div>
                 </motion.div>
             </div>
         </section>

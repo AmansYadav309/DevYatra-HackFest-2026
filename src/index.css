@@ -6,6 +6,30 @@
     body {
         @apply bg-surface-container-lowest font-body text-on-surface selection:bg-primary selection:text-on-primary-fixed overflow-x-hidden;
     }
+
+    /* Custom modern slim scrollbar */
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(253, 191, 31, 0.4) transparent;
+    }
+
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: rgba(253, 191, 31, 0.4);
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(253, 191, 31, 0.8);
+    }
 }
 
 @layer utilities {
