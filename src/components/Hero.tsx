@@ -120,7 +120,7 @@ export const Hero: React.FC = () => {
                         </button>
                     )} */}
                     <button 
-                        onClick={() => window.location.href = '/register'}
+                        onClick={() => window.open('https://forms.gle/xofZiLHR7PKC72kY6', '_blank')}
                         className="relative overflow-hidden group bg-gradient-to-br from-primary to-primary-container text-black px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-[0_0_30px_rgba(253,191,31,0.4)] hover:shadow-[0_0_50px_rgba(253,191,31,0.8)] hover:scale-105 active:scale-95">
                         <span className="relative z-10 flex items-center justify-center gap-2">
                             <span className="material-symbols-outlined">rocket_launch</span> Register Now
@@ -135,11 +135,12 @@ export const Hero: React.FC = () => {
                         </span>
                         Offline Mode
                     </div> */}
-                    <button 
-                        onClick={() => window.open('/ppt', '_blank')}
+                    <a 
+                        href="/DevYatra-Hackfest-template.pptx" 
+                        download="DevYatra-Hackfest-template.pptx"
                         className="relative overflow-hidden group bg-white/5 backdrop-blur-md border border-white/10 text-white px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:scale-105 active:scale-95 flex items-center justify-center gap-3">
                         <span className="material-symbols-outlined">download</span> Download PPT
-                    </button>
+                    </a>
                 </motion.div>
 
                 {/* Problem Statements Released - Notification Pill */}

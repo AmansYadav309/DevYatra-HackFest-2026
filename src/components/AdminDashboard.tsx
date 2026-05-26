@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { db } from '../config/firebase';
-import { collection, getDocs, doc, updateDoc, query, orderBy, setDoc } from 'firebase/firestore';
+import { collection, getDocs, doc, updateDoc, setDoc } from 'firebase/firestore';
 
 interface Submission {
     id: string;
@@ -130,6 +130,7 @@ export const AdminDashboard: React.FC = () => {
     const [submissions, setSubmissions] = useState<Submission[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [filter, setFilter] = useState<'all' | 'pending' | 'selected' | 'rejected'>('all');
+    const [fetchError, setFetchError] = useState('');
 
     // Access Control State
     const [newAuthEmail, setNewAuthEmail] = useState('');
@@ -138,21 +139,48 @@ export const AdminDashboard: React.FC = () => {
     const [accessMsg, setAccessMsg] = useState('');
     const [accessError, setAccessError] = useState('');
 
+    const getTimestampMillis = (data: Record<string, any>) => {
+        const candidate = data.submittedAt ?? data.createdAt ?? data.timestamp;
+        if (!candidate) return 0;
+        if (typeof candidate?.toMillis === 'function') return candidate.toMillis();
+        if (candidate instanceof Date) return candidate.getTime();
+        if (typeof candidate === 'number') return candidate;
+        if (typeof candidate === 'string') {
+            const parsed = Date.parse(candidate);
+            return Number.isNaN(parsed) ? 0 : parsed;
+        }
+        if (typeof candidate === 'object' && typeof candidate.seconds === 'number') {
+            return candidate.seconds * 1000;
+        }
+        return 0;
+    };
+
     const fetchSubmissions = async () => {
         setIsLoading(true);
+        setFetchError('');
         try {
-            const q = query(collection(db, 'submissions'), orderBy('submittedAt', 'desc'));
-            const snapshot = await getDocs(q);
-            const data = snapshot.docs.map(d => ({
-                id: d.id,
-                ...d.data(),
-                score:   d.data().score   ?? 0,
-                status:  d.data().status  ?? 'pending',
-                ratings: d.data().ratings ?? {},
-            })) as Submission[];
+            const snapshot = await getDocs(collection(db, 'submissions'));
+            const data = snapshot.docs
+                .map(d => {
+                    const raw = d.data() as Record<string, any>;
+                    return {
+                        id: d.id,
+                        ...raw,
+                        score: raw.score ?? 0,
+                        status: raw.status ?? 'pending',
+                        ratings: raw.ratings ?? {},
+                        _sortTs: getTimestampMillis(raw),
+                    };
+                })
+                .sort((a, b) => b._sortTs - a._sortTs)
+                .map(({ _sortTs, ...rest }) => rest) as Submission[];
+
             setSubmissions(data);
-        } catch (err) {
+        } catch (err: any) {
             console.error('Error fetching submissions:', err);
+            setSubmissions([]);
+            const errorMsg = err?.message || 'Permission denied or network error';
+            setFetchError(`Unable to load submissions from Firestore: ${errorMsg}. Please ensure your Firestore Security Rules allow reads.`);
         } finally {
             setIsLoading(false);
         }
@@ -371,6 +399,12 @@ export const AdminDashboard: React.FC = () => {
             {/* TAB: Submissions */}
             {activeTab === 'submissions' && (
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+                    {fetchError && (
+                        <div className="mb-6 bg-red-500/10 border border-red-500/25 rounded-xl p-4 text-sm text-red-300 flex items-center gap-2">
+                            <span className="material-symbols-outlined text-base">error</span>
+                            {fetchError}
+                        </div>
+                    )}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
                         {([
                             { key: 'all',      label: 'Total',    color: 'text-white',      bg: 'bg-white/5',       border: 'border-white/10' },
